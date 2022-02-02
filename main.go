@@ -11,6 +11,38 @@ type block struct {
 	prevHash string
 }
 
+type blockchain struct {
+	blocks []block
+}
+
+//   new block add
+func (b *blockchain) addBlock(data string) {
+	// 블록체인의 길이가 0보다 크면 이전 블록체인의 hash가 존재해야 함
+	newBlock := block{data, "", b.getLastHash()}
+	hash := sha256.Sum256([]byte(newBlock.data + newBlock.prevHash))
+	newBlock.hash = fmt.Sprintf("%x", hash) //  16진수 변환
+
+	// 받아온 b.blocks에 새 블록의 hash를 추가하낟
+	b.blocks = append(b.blocks, newBlock)
+}
+
+//  all block print
+func (b *blockchain) listBlocks() {
+	for _, block := range b.blocks {
+		fmt.Printf("Data : %s\n", block.data)
+		fmt.Printf("Data : %s\n", block.hash)
+		fmt.Printf("Data : %s\n", block.prevHash)
+	}
+}
+
+//  주어진 블록의 이전 블록 hash 가져오기
+func (b *blockchain) getLastHash() string {
+	if len(b.blocks) > 0 {
+		return b.blocks[len(b.blocks)-1].hash
+	}
+	return ""
+}
+
 func main() {
 	// genesisBlock : 최초 블럭
 	genesisBlock := block{
@@ -27,4 +59,22 @@ func main() {
 	genesisBlock.hash = hexHash
 
 	fmt.Println(genesisBlock) //  {Genesis Block 89eb0ac031a63d2421cd05a2fbe41f3ea35f5c3712ca839cbf6b85c4ee07b7a3 }
+
+	chain := blockchain{}
+	chain.addBlock("Genesis Block")
+	// Data : Genesis Block
+	// Data : 89eb0ac031a63d2421cd05a2fbe41f3ea35f5c3712ca839cbf6b85c4ee07b7a3
+	// Data :
+
+	chain.addBlock("Second Block")
+	// Data : Second Block
+	// Data : ec6f43cf27c78760cc38a4855b36e83a7f054f5205a751628591d3f505599c08
+	// Data : 89eb0ac031a63d2421cd05a2fbe41f3ea35f5c3712ca839cbf6b85c4ee07b7a3
+
+	chain.addBlock("Third Block")
+	// Data : Third Block
+	// Data : d90e93ce55d3ef3b137b01112c8aad9f304efde1f970c41035c9c7658ad5e8dd
+	// Data : ec6f43cf27c78760cc38a4855b36e83a7f054f5205a751628591d3f505599c08
+
+	chain.listBlocks()
 }
