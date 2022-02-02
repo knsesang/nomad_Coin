@@ -199,3 +199,13 @@ func struncts_02() {
 	// nico
 }
 </code>
+
+
+###  Printf / Sprintf
+Printf 
+Sprintf : 콘솔에 출력하지 않고 string 을 return
+
+### HASH
+B1 : b1Hash = (data + "")
+B2 : b2Hash = (data + b1Hash)
+B3 : b3Hash = (data + b2Hash)
