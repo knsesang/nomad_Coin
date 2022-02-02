@@ -14,6 +14,7 @@ nomad_Coin study
 * func 함수명(입력 파라미터) (전달 파라미터)
  
 * 형식 1
+<code>
 func func_01(name string) (int, string) {
     return len(name), strings.ToUpper(name)
 }
@@ -27,9 +28,10 @@ func Fn_Afunc_03(name string) (length int, uppercase string) {
     uppercase = strings.ToUpper(name)
     return
 }
+</code>
 
 ### 반복문
-
+<code>
 func for_01(numbers ...int) {
 	for number := range numbers {
 		fmt.Println(number)
@@ -47,10 +49,10 @@ func for_03(numbers ...int) {
 		fmt.Println(numbers[i])
 	}
 }
-
+</code>
 
 ### IF
-
+<code>
 func if_01() {
 	age := 23
 	if age < 23 {
@@ -68,10 +70,10 @@ func if_02() {
     // if 문 밖에서 변수 호출 불가능
 	fmt.Println(age2)
 }
-
+</code>
 
 ### SWITCH
-
+<code>
 func swith_01() {
 	age := 30
 	switch age {
@@ -96,9 +98,10 @@ func swith_02() {
 		println(30)
 	}
 }
+</code>
 
 ### ARRAY
-
+<code>
 func array_01() {
 	names := [5]string{"aaa", "bbb", "ccc"}
 	fmt.Println(names)
@@ -122,10 +125,10 @@ func array_02() {
 	fmt.Println(names)
 	// [aaa bbb ccc ddd]
 }
-
+</code>
 
 ### POINTER
-
+<code>
 func pointer_01() {
 	a := 2
 	b := 3
@@ -133,7 +136,7 @@ func pointer_01() {
 	fmt.Println(a, b)
 	// 2 3
 
-	// 메모리 포인투 주소 출력
+	// 메모리 포인터 주소 출력
 	fmt.Println(&a, &b)
 	// 0xc000014098 0xc0000140b0
 
@@ -147,7 +150,7 @@ func pointer_02() {
 	fmt.Println(a, b)
 	// 2 0xc0000140f0
 
-	// 메모리 포인투 주소 출력
+	// 메모리 포인터 주소 출력
 	fmt.Println(&a, &b)
 	// 0xc000014098 0xc0000140b0
 }
@@ -168,18 +171,18 @@ func pointer_03() {
 	fmt.Println(a, &a, *b, &b)
 	// 20 0xc0000140f8 20 0xc000006038
 }
-
+</code>
 
 ### MAP
-
+</code>
 func map_01() {
 	nico := map[string]string{"name": "nico", "age": "30"}
 	fmt.Println(nico)
 }
-
+</code>
 
 ### STRUCTS
-
+<code>
 func struncts_01() {
 	favFood := []string{"김치", "라면"}
 	nico := person{"nico", 22, favFood}
@@ -195,3 +198,4 @@ func struncts_02() {
 	fmt.Println(nico.name)
 	// nico
 }
+</code>
