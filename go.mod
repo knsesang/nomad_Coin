@@ -1,3 +1,3 @@
-module github.com/knsesang/nomad_Coin
+module _nadochain_com
 
 go 1.17
